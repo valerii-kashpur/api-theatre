@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from django.db.models import F, Count
-from django.template.defaultfilters import title
 from rest_framework import mixins, viewsets, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
@@ -16,6 +15,13 @@ from theatre.models import (
     Play,
     Performance,
     Reservation
+)
+from theatre.pagination import (
+    GenrePagination,
+    ActorPagination,
+    PlayPagination,
+    PerformancePagination,
+    ReservationPagination
 )
 from theatre.permissions import IsAdminOrIfAuthenticatedReadOnly
 from theatre.serializers import (
@@ -40,6 +46,7 @@ class GenresViewSet(
 ):
     queryset = Genre.objects.all()
     serializer_class = GenresSerializer
+    pagination_class = GenrePagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
@@ -51,6 +58,7 @@ class ActorViewSet(
 ):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
+    pagination_class = ActorPagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
@@ -91,6 +99,7 @@ class PlayViewSet(
 ):
     queryset = Play.objects.all().prefetch_related("genres", "actors")
     serializer_class = PlaySerializer
+    pagination_class = PlayPagination
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @staticmethod
@@ -157,6 +166,7 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         )
     )
     serializer_class = PerformanceSerializer
+    pagination_class = PerformancePagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
@@ -205,13 +215,14 @@ class PerformanceViewSet(viewsets.ModelViewSet):
 class ReservationViewSet(
     mixins.CreateModelMixin,
     mixins.ListModelMixin,
-    GenresViewSet
+    GenericViewSet
 ):
     queryset = Reservation.objects.prefetch_related(
         "tickets__performance_play",
         "tickets__performance__theatre_hall"
     )
     serializer_class = ReservationSerializer
+    pagination_class = ReservationPagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 

@@ -14,7 +14,7 @@ class Play(models.Model):
     actors = models.ManyToManyField('Actor', related_name='plays')
     image = models.ImageField(
         null=True,
-        upload_to=partial(image_file_path, folder="plays")
+        upload_to=partial(image_file_path, folder="plays", unique_key="title")
     )
 
     def __str__(self):
@@ -36,7 +36,11 @@ class Actor(models.Model):
     last_name = models.CharField(max_length=255)
     image = models.ImageField(
         null=True,
-        upload_to=partial(image_file_path, folder="actors")
+        upload_to=partial(
+            image_file_path,
+            folder="actors",
+            unique_key="last_name"
+        )
     )
 
     def __str__(self):
@@ -66,7 +70,10 @@ class Performance(models.Model):
     show_time = models.DateTimeField()
     image = models.ImageField(
         null=True,
-        upload_to=partial(image_file_path, folder="performances")
+        upload_to=partial(
+            image_file_path,
+            folder="performances",
+        )
     )
 
     def __str__(self):
