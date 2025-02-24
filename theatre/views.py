@@ -1,12 +1,13 @@
 from datetime import datetime
 
 from django.db.models import F, Count
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import mixins, viewsets, status
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from theatre.models import (
     Genre,
@@ -47,7 +48,7 @@ class GenresViewSet(
     queryset = Genre.objects.all()
     serializer_class = GenresSerializer
     pagination_class = GenrePagination
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
@@ -59,7 +60,7 @@ class ActorViewSet(
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
     pagination_class = ActorPagination
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @action(
@@ -87,7 +88,7 @@ class TheatreHallViewSet(
 ):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
@@ -108,19 +109,20 @@ class PlayViewSet(
         return [int(str_id) for str_id in qs.split(",")]
 
     def get_queryset(self):
-        title = self.queryset.query_params.get("title")
-        genres = self.queryset.query_params.get("genres")
-        actors = self.queryset.query_params.get("actors")
+        title = self.request.query_params.get("title")
+        genres = self.request.query_params.get("genres")
+        actors = self.request.query_params.get("actors")
 
         queryset = self.queryset
 
         if title:
             queryset = queryset.filter(title__icontains=title)
         if genres:
-            queryset = queryset.filter(genres__genre__icontains=genres)
+            genres_ids = self._params_to_ints(genres)
+            queryset = queryset.filter(genres__id__in=genres_ids)
         if actors:
             actors_ids = self._params_to_ints(actors)
-            queryset = queryset.filter(actors__actor__icontains=actors_ids)
+            queryset = queryset.filter(actors__id__in=actors_ids)
 
         return queryset.distinct()
 
@@ -150,6 +152,27 @@ class PlayViewSet(
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                "title",
+                description="Play title",
+            ),
+            OpenApiParameter(
+                "genres",
+                type={"type": "list", "items": {"type": "integer"}},
+                description="Play genres",
+            ),
+            OpenApiParameter(
+                "actors",
+                type={"type": "list", "items": {"type": "integer"}},
+                description="Play actors",
+            ),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
 
 class PerformanceViewSet(viewsets.ModelViewSet):
     queryset = (
@@ -167,7 +190,7 @@ class PerformanceViewSet(viewsets.ModelViewSet):
     )
     serializer_class = PerformanceSerializer
     pagination_class = PerformancePagination
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     def get_queryset(self):
@@ -223,11 +246,11 @@ class ReservationViewSet(
     )
     serializer_class = ReservationSerializer
     pagination_class = ReservationPagination
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     def get_queryset(self):
-        return Performance.objects.filter(user=self.request.user)
+        return Reservation.objects.filter(user=self.request.user)
 
     def get_serializer_class(self):
         if self.action == "list":

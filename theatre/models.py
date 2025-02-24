@@ -3,8 +3,8 @@ from functools import partial
 from django.db import models
 from rest_framework.exceptions import ValidationError
 
+from service import settings
 from service.utils import image_file_path
-from user.models import User
 
 
 class Play(models.Model):
@@ -85,7 +85,10 @@ class Performance(models.Model):
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return str(self.created_at)
@@ -119,8 +122,8 @@ class Ticket(models.Model):
                 raise error_to_raise(
                     {
                         ticket_attr_name: f"{ticket_attr_name} "
-                                          f"number must be in available range: "
-                                          f"(1, {theatre_hall_attr_name}): "
+                                          f"number must be in available range:"
+                                          f" (1, {theatre_hall_attr_name}): "
                                           f"(1, {count_attrs})"
                     }
                 )

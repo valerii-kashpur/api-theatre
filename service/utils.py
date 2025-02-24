@@ -18,4 +18,4 @@ def image_file_path(
     else:
         filename = f"{uuid.uuid4()}{extension}"
 
-    return os.path.join(f"uploads/{folder}/", filename)
+    return os.path.join(f"{folder}/", filename)

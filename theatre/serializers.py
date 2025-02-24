@@ -89,9 +89,6 @@ class PerformanceListSerializer(serializers.ModelSerializer):
 
 
 class PerformanceSerializer(serializers.ModelSerializer):
-    play = PlayDetailSerializer(read_only=True)
-    theatre_hall = TheatreHallSerializer(read_only=True)
-
     class Meta:
         model = Performance
         fields = ("id", "play", "theatre_hall", "show_time", "image")
@@ -141,9 +138,13 @@ class ReservationSerializer(serializers.ModelSerializer):
             tickets_data = validated_data.pop("tickets")
             reservation = Reservation.objects.create(**validated_data)
             for ticket_data in tickets_data:
-                Ticket.objects.create(order=reservation, **ticket_data)
+                Ticket.objects.create(reservation=reservation, **ticket_data)
             return reservation
 
 
 class ReservationListSerializer(serializers.ModelSerializer):
     tickets = TicketSerializer(many=True, read_only=False)
+
+    class Meta:
+        model = Reservation
+        fields = "__all__"
