@@ -276,8 +276,6 @@ class PerformanceViewSetAuthenticatedAdminTests(APITestCase):
         }
         response = self.client.post(url, data, format="multipart")
 
-        print(response.data)
-
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn("image", response.data)
         self.performance.refresh_from_db()
