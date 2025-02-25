@@ -90,6 +90,13 @@ class Performance(models.Model):
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
+    payment_status = models.CharField(
+        max_length=20, default='pending', choices=[
+            ('pending', 'Pending'),
+            ('paid', 'Paid'),
+            ('failed', 'Failed'),
+        ]
+    )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE

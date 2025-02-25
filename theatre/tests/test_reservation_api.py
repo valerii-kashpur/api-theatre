@@ -1,6 +1,6 @@
-from django.test import TestCase
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
+
 from theatre.models import (
     Reservation,
     Performance,
@@ -149,8 +149,6 @@ class ReservationViewSetAuthenticatedUserTests(APITestCase):
         }
         response = self.client.post(url, data, format="json")
 
-        print(response.data)
-
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(len(response.data["tickets"]), 1)
         self.assertEqual(response.data["tickets"][0]["row"], 2)
@@ -164,6 +162,104 @@ class ReservationViewSetAuthenticatedUserTests(APITestCase):
             Ticket.objects.filter(reservation=reservation).count(),
             1
         )
+
+    def test_reservation_pay_authenticated(self):
+        """Test that an authenticated non-admin user can initiate a payment for a reservation."""
+        url = f"/api/theatre/reservations/{self.reservation.id}/pay/"
+        data = {
+            "payment_method_id": "pm_card_visa"
+        }
+        response = self.client.post(url, data, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn("client_secret", response.data)
+        self.assertIn("reservation_id", response.data)
+        self.assertIn("payment_intent_id", response.data)
+        self.reservation.refresh_from_db()
+        self.assertEqual(
+            self.reservation.payment_status,
+            "paid"
+        )
+
+    def test_reservation_pay_authenticated_already_processed(self):
+        """Test that an authenticated non-admin user cannot pay for an already processed reservation."""
+        self.reservation.payment_status = "paid"
+        self.reservation.save()
+        url = f"/api/theatre/reservations/{self.reservation.id}/pay/"
+        data = {
+            "payment_method_id": "pm_card_visa"
+        }
+        response = self.client.post(url, data, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data["error"],
+            "Reservation already processed"
+        )
+
+    def test_reservation_pay_authenticated_invalid_payment_method(self):
+        """Test that an authenticated non-admin user gets an error with an invalid payment method."""
+        url = f"/api/theatre/reservations/{self.reservation.id}/pay/"
+        data = {
+            "payment_method_id": "invalid_pm_id"
+        }
+        response = self.client.post(url, data, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("error", response.data)
+
+    def test_reservation_confirm_payment_authenticated(self):
+        """Test that an authenticated non-admin user can confirm a payment for a reservation."""
+        pay_url = f"/api/theatre/reservations/{self.reservation.id}/pay/"
+        pay_data = {
+            "payment_method_id": "pm_card_visa"
+        }
+        pay_response = self.client.post(pay_url, pay_data, format="json")
+
+        self.assertEqual(pay_response.status_code, status.HTTP_200_OK)
+        payment_intent_id = pay_response.data["payment_intent_id"]
+
+        confirm_url = f"/api/theatre/reservations/{self.reservation.id}/confirm-payment/"
+        confirm_data = {
+            "payment_intent_id": payment_intent_id
+        }
+        confirm_response = self.client.post(
+            confirm_url,
+            confirm_data,
+            format="json"
+        )
+
+        self.assertEqual(confirm_response.status_code, status.HTTP_200_OK)
+        self.assertEqual(confirm_response.data["status"], "success")
+        self.assertEqual(confirm_response.data["payment_status"], "paid")
+        self.reservation.refresh_from_db()
+        self.assertEqual(self.reservation.payment_status, "paid")
+
+    def test_reservation_confirm_payment_authenticated_missing_payment_intent(
+            self
+    ):
+        """Test that an authenticated non-admin user gets an error when confirming without payment intent ID."""
+        url = f"/api/theatre/reservations/{self.reservation.id}/confirm-payment/"
+        response = self.client.post(url, {}, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data["error"],
+            "Payment intent ID is required"
+        )
+
+    def test_reservation_confirm_payment_authenticated_invalid_payment_intent(
+            self
+    ):
+        """Test that an authenticated non-admin user gets an error with an invalid payment intent ID."""
+        url = f"/api/theatre/reservations/{self.reservation.id}/confirm-payment/"
+        data = {
+            "payment_intent_id": "invalid_pi_id"
+        }
+        response = self.client.post(url, data, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("error", response.data)
 
 
 class ReservationViewSetAuthenticatedAdminTests(APITestCase):
