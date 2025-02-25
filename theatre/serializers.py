@@ -8,14 +8,15 @@ from theatre.models import (
     TheatreHall,
     Play,
     Performance,
-    Reservation, Ticket
+    Reservation,
+    Ticket,
 )
 
 
 class GenresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
-        fields = '__all__'
+        fields = "__all__"
 
 
 class ActorSerializer(serializers.ModelSerializer):
@@ -38,14 +39,10 @@ class PlaySerializer(serializers.ModelSerializer):
 
 class PlayListSerializer(serializers.ModelSerializer):
     genres = serializers.SlugRelatedField(
-        many=True,
-        read_only=True,
-        slug_field="name"
+        many=True, read_only=True, slug_field="name"
     )
     actors = serializers.SlugRelatedField(
-        many=True,
-        read_only=True,
-        slug_field="full_name"
+        many=True, read_only=True, slug_field="full_name"
     )
 
     class Meta:
@@ -65,12 +62,10 @@ class PlayDetailSerializer(serializers.ModelSerializer):
 class PerformanceListSerializer(serializers.ModelSerializer):
     play_title = serializers.CharField(source="play.title", read_only=True)
     theatre_hall_name = serializers.CharField(
-        source="theatre_hall.name",
-        read_only=True
+        source="theatre_hall.name", read_only=True
     )
     theatre_hall_capacity = serializers.IntegerField(
-        source="theatre_hall.capacity",
-        read_only=True
+        source="theatre_hall.capacity", read_only=True
     )
     tickets_available = serializers.IntegerField(read_only=True)
 
@@ -84,7 +79,7 @@ class PerformanceListSerializer(serializers.ModelSerializer):
             "theatre_hall_name",
             "theatre_hall_capacity",
             "tickets_available",
-            "image"
+            "image",
         )
 
 
@@ -114,15 +109,18 @@ class PerformanceDetailSerializer(serializers.ModelSerializer):
     play = PlayDetailSerializer(read_only=True)
     theatre_hall = TheatreHallSerializer(read_only=True)
     taken_places = TicketSerializer(
-        many=True,
-        read_only=True,
-        source="tickets"
+        many=True, read_only=True, source="tickets"
     )
 
     class Meta:
         model = Performance
         fields = (
-            "id", "play", "theatre_hall", "show_time", "taken_places", "image"
+            "id",
+            "play",
+            "theatre_hall",
+            "show_time",
+            "taken_places",
+            "image",
         )
 
 

@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theatre', '0001_initial'),
+        ("theatre", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='reservation',
-            name='payment_status',
+            model_name="reservation",
+            name="payment_status",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='genre',
-            name='name',
+            model_name="genre",
+            name="name",
             field=models.CharField(max_length=255, unique=True),
         ),
     ]

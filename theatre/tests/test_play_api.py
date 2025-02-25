@@ -20,32 +20,33 @@ class PlayViewSetUnauthenticatedTests(APITestCase):
         genre = Genre.objects.create(name="Drama")
         actor = Actor.objects.create(first_name="John", last_name="Doe")
         self.play = Play.objects.create(
-            title="Silent Whispers",
-            description="A dramatic tale"
+            title="Silent Whispers", description="A dramatic tale"
         )
         self.play.genres.add(genre)
         self.play.actors.add(actor)
 
     def test_play_list_unauthenticated(self):
-        """Test that an unauthenticated user cannot list plays (returns 401 Unauthorized)."""
+        """Test that an unauthenticated user
+         cannot list plays (returns 401 Unauthorized)."""
         url = "/api/theatre/plays/"
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
 
     def test_play_retrieve_unauthenticated(self):
-        """Test that an unauthenticated user cannot retrieve a play (returns 401 Unauthorized)."""
+        """Test that an unauthenticated user
+         cannot retrieve a play (returns 401 Unauthorized)."""
         url = f"/api/theatre/plays/{self.play.id}/"
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
 
     def test_play_create_unauthenticated(self):
@@ -56,18 +57,17 @@ class PlayViewSetUnauthenticatedTests(APITestCase):
             "title": "New Play",
             "description": "A new story",
             "genres": [Genre.objects.get(name="Drama").id],
-            "actors": [actor.id]
+            "actors": [actor.id],
         }
         response = self.client.post(url, data, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
         self.assertEqual(
-            Play.objects.count(),
-            1
+            Play.objects.count(), 1
         )  # Ensure no new play was created
 
 
@@ -76,8 +76,7 @@ class PlayViewSetAuthenticatedUserTests(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
-            email="user@example.com",
-            password="userpass123"
+            email="user@example.com", password="userpass123"
         )
 
         refresh = RefreshToken.for_user(self.user)
@@ -89,8 +88,7 @@ class PlayViewSetAuthenticatedUserTests(APITestCase):
         genre = Genre.objects.create(name="Drama")
         actor = Actor.objects.create(first_name="John", last_name="Doe")
         self.play = Play.objects.create(
-            title="Silent Whispers",
-            description="A dramatic tale"
+            title="Silent Whispers", description="A dramatic tale"
         )
         self.play.genres.add(genre)
         self.play.actors.add(actor)
@@ -101,13 +99,9 @@ class PlayViewSetAuthenticatedUserTests(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data["results"]), 1)
         self.assertEqual(
-            len(response.data["results"]),
-            1
-        )
-        self.assertEqual(
-            response.data["results"][0]["title"],
-            "Silent Whispers"
+            response.data["results"][0]["title"], "Silent Whispers"
         )
 
     def test_play_retrieve_authenticated(self):
@@ -121,32 +115,33 @@ class PlayViewSetAuthenticatedUserTests(APITestCase):
         self.assertEqual(len(response.data["genres"]), 1)
         self.assertEqual(response.data["genres"][0]["name"], "Drama")
         self.assertEqual(len(response.data["actors"]), 1)
-        self.assertEqual(response.data["actors"][0]["full_name"], "John Doe")
+        self.assertEqual(
+            response.data["actors"][0]["full_name"], "John Doe"
+        )
 
     def test_play_create_authenticated(self):
-        """Test that an authenticated non-admin user cannot create a play (returns 403 Forbidden)."""
+        """Test that an authenticated non-admin
+         user cannot create a play (returns 403 Forbidden)."""
         url = "/api/theatre/plays/"
         actor = Actor.objects.get(first_name="John", last_name="Doe")
         data = {
             "title": "New Play",
             "description": "A new story",
             "genres": [Genre.objects.get(name="Drama").id],
-            "actors": [actor.id]
+            "actors": [actor.id],
         }
         response = self.client.post(url, data, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(
             response.data["detail"],
-            "You do not have permission to perform this action."
+            "You do not have permission to perform this action.",
         )
-        self.assertEqual(
-            Play.objects.count(),
-            1
-        )
+        self.assertEqual(Play.objects.count(), 1)
 
     def test_play_upload_image_authenticated(self):
-        """Test that an authenticated non-admin user cannot upload an image (returns 403 Forbidden)."""
+        """Test that an authenticated non-admin
+         user cannot upload an image (returns 403 Forbidden)."""
         url = f"/api/theatre/plays/{self.play.id}/upload-image/"
         actor = Actor.objects.get(first_name="John", last_name="Doe")
         img = Image.new("RGB", (10, 10))
@@ -154,21 +149,21 @@ class PlayViewSetAuthenticatedUserTests(APITestCase):
         img.save(img_byte_arr, format="JPEG")
         img_byte_arr = img_byte_arr.getvalue()
         image = SimpleUploadedFile(
-            "test_image.jpg",
-            img_byte_arr,
-            content_type="image/jpeg"
+            "test_image.jpg", img_byte_arr, content_type="image/jpeg"
         )
         data = {
-            "image": image, "description": "A new story", "title": "New Play",
+            "image": image,
+            "description": "A new story",
+            "title": "New Play",
             "genres": [Genre.objects.get(name="Drama").id],
-            "actors": actor.id
+            "actors": actor.id,
         }
         response = self.client.post(url, data, format="multipart")
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(
             response.data["detail"],
-            "You do not have permission to perform this action."
+            "You do not have permission to perform this action.",
         )
 
 
@@ -177,8 +172,7 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create_superuser(
-            email="admin@example.com",
-            password="adminpass123"
+            email="admin@example.com", password="adminpass123"
         )
 
         refresh = RefreshToken.for_user(self.user)
@@ -190,8 +184,7 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
         genre = Genre.objects.create(name="Drama")
         actor = Actor.objects.create(first_name="John", last_name="Doe")
         self.play = Play.objects.create(
-            title="Silent Whispers",
-            description="A dramatic tale"
+            title="Silent Whispers", description="A dramatic tale"
         )
         self.play.genres.add(genre)
         self.play.actors.add(actor)
@@ -202,13 +195,9 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data["results"]), 1)
         self.assertEqual(
-            len(response.data["results"]),
-            1
-        )
-        self.assertEqual(
-            response.data["results"][0]["title"],
-            "Silent Whispers"
+            response.data["results"][0]["title"], "Silent Whispers"
         )
 
     def test_play_retrieve_authenticated(self):
@@ -222,7 +211,9 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
         self.assertEqual(len(response.data["genres"]), 1)
         self.assertEqual(response.data["genres"][0]["name"], "Drama")
         self.assertEqual(len(response.data["actors"]), 1)
-        self.assertEqual(response.data["actors"][0]["full_name"], "John Doe")
+        self.assertEqual(
+            response.data["actors"][0]["full_name"], "John Doe"
+        )
 
     def test_play_create_authenticated(self):
         """Test that an authenticated admin user can create a play."""
@@ -232,7 +223,7 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
             "title": "New Play",
             "description": "A new story",
             "genres": [Genre.objects.get(name="Drama").id],
-            "actors": [actor.id]
+            "actors": [actor.id],
         }
         response = self.client.post(url, data, format="json")
 
@@ -246,7 +237,8 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
         self.assertEqual(play.actors.count(), 1)
 
     def test_play_upload_image_authenticated(self):
-        """Test that an authenticated admin user can upload an image for a play."""
+        """Test that an authenticated admin
+         user can upload an image for a play."""
         url = f"/api/theatre/plays/{self.play.id}/upload-image/"
         actor = Actor.objects.get(first_name="John", last_name="Doe")
         img = Image.new("RGB", (10, 10))
@@ -254,14 +246,14 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
         img.save(img_byte_arr, format="JPEG")
         img_byte_arr = img_byte_arr.getvalue()
         image = SimpleUploadedFile(
-            "test_image.jpg",
-            img_byte_arr,
-            content_type="image/jpeg"
+            "test_image.jpg", img_byte_arr, content_type="image/jpeg"
         )
         data = {
-            "image": image, "description": "A new story", "title": "New Play",
+            "image": image,
+            "description": "A new story",
+            "title": "New Play",
             "genres": [Genre.objects.get(name="Drama").id],
-            "actors": actor.id
+            "actors": actor.id,
         }
         response = self.client.post(url, data, format="multipart")
 
@@ -269,6 +261,4 @@ class PlayViewSetAuthenticatedAdminTests(APITestCase):
         self.assertIn("image", response.data)
         self.play.refresh_from_db()
         self.assertIsNotNone(self.play.image)
-        self.assertTrue(
-            os.path.exists(self.play.image.path)
-        )
+        self.assertTrue(os.path.exists(self.play.image.path))

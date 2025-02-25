@@ -10,26 +10,23 @@ from service.utils import image_file_path
 class Play(models.Model):
     title = models.CharField(max_length=255, null=False, blank=False)
     description = models.TextField()
-    genres = models.ManyToManyField('Genre', related_name='plays')
-    actors = models.ManyToManyField('Actor', related_name='plays')
+    genres = models.ManyToManyField("Genre", related_name="plays")
+    actors = models.ManyToManyField("Actor", related_name="plays")
     image = models.ImageField(
         null=True,
-        upload_to=partial(image_file_path, folder="plays", unique_key="title")
+        upload_to=partial(image_file_path, folder="plays", unique_key="title"),
     )
 
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ['title']
+        ordering = ["title"]
 
 
 class Genre(models.Model):
     name = models.CharField(
-        max_length=255,
-        null=False,
-        blank=False,
-        unique=True
+        max_length=255, null=False, blank=False, unique=True
     )
 
     def __str__(self):
@@ -42,10 +39,8 @@ class Actor(models.Model):
     image = models.ImageField(
         null=True,
         upload_to=partial(
-            image_file_path,
-            folder="actors",
-            unique_key="last_name"
-        )
+            image_file_path, folder="actors", unique_key="last_name"
+        ),
     )
 
     def __str__(self):
@@ -78,49 +73,46 @@ class Performance(models.Model):
         upload_to=partial(
             image_file_path,
             folder="performances",
-        )
+        ),
     )
 
     def __str__(self):
         return f"{self.play} {self.theatre_hall}"
 
     class Meta:
-        ordering = ['-show_time', 'theatre_hall']
+        ordering = ["-show_time", "theatre_hall"]
 
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     payment_status = models.CharField(
-        max_length=20, default='pending', choices=[
-            ('pending', 'Pending'),
-            ('paid', 'Paid'),
-            ('failed', 'Failed'),
-        ]
+        max_length=20,
+        default="pending",
+        choices=[
+            ("pending", "Pending"),
+            ("paid", "Paid"),
+            ("failed", "Failed"),
+        ],
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
 
     def __str__(self):
         return str(self.created_at)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ["-created_at"]
 
 
 class Ticket(models.Model):
     row = models.PositiveIntegerField()
     seat = models.PositiveIntegerField()
     performance = models.ForeignKey(
-        Performance,
-        on_delete=models.CASCADE,
-        related_name="tickets"
+        Performance, on_delete=models.CASCADE, related_name="tickets"
     )
     reservation = models.ForeignKey(
-        Reservation,
-        on_delete=models.CASCADE,
-        related_name="tickets"
+        Reservation, on_delete=models.CASCADE, related_name="tickets"
     )
 
     @staticmethod
@@ -134,9 +126,9 @@ class Ticket(models.Model):
                 raise error_to_raise(
                     {
                         ticket_attr_name: f"{ticket_attr_name} "
-                                          f"number must be in available range:"
-                                          f" (1, {theatre_hall_attr_name}): "
-                                          f"(1, {count_attrs})"
+                        f"number must be in available range:"
+                        f" (1, {theatre_hall_attr_name}): "
+                        f"(1, {count_attrs})"
                     }
                 )
 
@@ -149,11 +141,11 @@ class Ticket(models.Model):
         )
 
     def save(
-            self,
-            force_insert=False,
-            force_update=False,
-            using=None,
-            update_fields=None,
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
     ):
         self.full_clean()
         return super(Ticket, self).save(
@@ -164,5 +156,5 @@ class Ticket(models.Model):
         return f"{str(self.performance)} (row: {self.row}, seat: {self.seat})"
 
     class Meta:
-        unique_together = ('row', 'seat', "performance")
-        ordering = ['row', 'seat']
+        unique_together = ("row", "seat", "performance")
+        ordering = ["row", "seat"]

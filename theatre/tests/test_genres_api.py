@@ -1,4 +1,3 @@
-from django.test import TestCase
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
 from theatre.models import Genre
@@ -23,7 +22,7 @@ class GenresViewSetUnauthenticatedTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
 
     def test_genres_create_unauthenticated(self):
@@ -35,11 +34,10 @@ class GenresViewSetUnauthenticatedTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
         self.assertEqual(
-            Genre.objects.count(),
-            1
+            Genre.objects.count(), 1
         )  # Ensure no new genre was created
 
 
@@ -48,8 +46,7 @@ class GenresViewSetAuthenticatedAdminTests(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create_superuser(
-            email="admin@example.com",
-            password="adminpass123"
+            email="admin@example.com", password="adminpass123"
         )
 
         refresh = RefreshToken.for_user(self.user)
@@ -66,10 +63,7 @@ class GenresViewSetAuthenticatedAdminTests(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            len(response.data["results"]),
-            1
-        )
+        self.assertEqual(len(response.data["results"]), 1)
         self.assertEqual(response.data["results"][0]["name"], "Drama")
 
     def test_genres_create_authenticated(self):
@@ -91,14 +85,8 @@ class GenresViewSetAuthenticatedAdminTests(APITestCase):
         response = self.client.post(url, data, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn(
-            "name",
-            response.data
-        )
-        self.assertEqual(
-            Genre.objects.count(),
-            1
-        )
+        self.assertIn("name", response.data)
+        self.assertEqual(Genre.objects.count(), 1)
 
 
 class GenresViewSetAuthenticatedUserTests(APITestCase):
@@ -106,8 +94,7 @@ class GenresViewSetAuthenticatedUserTests(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
-            email="user@example.com",
-            password="userpass123"
+            email="user@example.com", password="userpass123"
         )
 
         refresh = RefreshToken.for_user(self.user)
@@ -125,14 +112,12 @@ class GenresViewSetAuthenticatedUserTests(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            len(response.data["results"]),
-            1
-        )
+        self.assertEqual(len(response.data["results"]), 1)
         self.assertEqual(response.data["results"][0]["name"], "Drama")
 
     def test_genres_create_authenticated(self):
-        """Test that an authenticated non-admin user cannot create a genre (returns 403 Forbidden)."""
+        """Test that an authenticated non-admin
+         user cannot create a genre (returns 403 Forbidden)."""
         url = "/api/theatre/genres/"
         data = {"name": "Test Genre"}
         response = self.client.post(url, data, format="json")
@@ -140,9 +125,6 @@ class GenresViewSetAuthenticatedUserTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(
             response.data["detail"],
-            "You do not have permission to perform this action."
+            "You do not have permission to perform this action.",
         )
-        self.assertEqual(
-            Genre.objects.count(),
-            1
-        )
+        self.assertEqual(Genre.objects.count(), 1)

@@ -17,80 +17,208 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Actor',
+            name="Actor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=255)),
-                ('last_name', models.CharField(max_length=255)),
-                ('image', models.ImageField(null=True, upload_to=functools.partial(service.utils.image_file_path, *(), **{'folder': 'actors', 'unique_key': 'last_name'}))),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=255)),
+                ("last_name", models.CharField(max_length=255)),
+                (
+                    "image",
+                    models.ImageField(
+                        null=True,
+                        upload_to=functools.partial(
+                            service.utils.image_file_path,
+                            *(),
+                            **{"folder": "actors", "unique_key": "last_name"}
+                        ),
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Genre',
+            name="Genre",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='TheatreHall',
+            name="TheatreHall",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('rows', models.PositiveIntegerField()),
-                ('seats_in_row', models.PositiveIntegerField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("rows", models.PositiveIntegerField()),
+                ("seats_in_row", models.PositiveIntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Play',
+            name="Play",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('image', models.ImageField(null=True, upload_to=functools.partial(service.utils.image_file_path, *(), **{'folder': 'plays', 'unique_key': 'title'}))),
-                ('actors', models.ManyToManyField(related_name='plays', to='theatre.actor')),
-                ('genres', models.ManyToManyField(related_name='plays', to='theatre.genre')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("description", models.TextField()),
+                (
+                    "image",
+                    models.ImageField(
+                        null=True,
+                        upload_to=functools.partial(
+                            service.utils.image_file_path,
+                            *(),
+                            **{"folder": "plays", "unique_key": "title"}
+                        ),
+                    ),
+                ),
+                (
+                    "actors",
+                    models.ManyToManyField(
+                        related_name="plays", to="theatre.actor"
+                    ),
+                ),
+                (
+                    "genres",
+                    models.ManyToManyField(
+                        related_name="plays", to="theatre.genre"
+                    ),
+                ),
             ],
             options={
-                'ordering': ['title'],
+                "ordering": ["title"],
             },
         ),
         migrations.CreateModel(
-            name='Reservation',
+            name="Reservation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created_at'],
+                "ordering": ["-created_at"],
             },
         ),
         migrations.CreateModel(
-            name='Performance',
+            name="Performance",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('show_time', models.DateTimeField()),
-                ('image', models.ImageField(null=True, upload_to=functools.partial(service.utils.image_file_path, *(), **{'folder': 'performances'}))),
-                ('play', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='theatre.play')),
-                ('theatre_hall', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='theatre.theatrehall')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("show_time", models.DateTimeField()),
+                (
+                    "image",
+                    models.ImageField(
+                        null=True,
+                        upload_to=functools.partial(
+                            service.utils.image_file_path,
+                            *(),
+                            **{"folder": "performances"}
+                        ),
+                    ),
+                ),
+                (
+                    "play",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="theatre.play",
+                    ),
+                ),
+                (
+                    "theatre_hall",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="theatre.theatrehall",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-show_time', 'theatre_hall'],
+                "ordering": ["-show_time", "theatre_hall"],
             },
         ),
         migrations.CreateModel(
-            name='Ticket',
+            name="Ticket",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('row', models.PositiveIntegerField()),
-                ('seat', models.PositiveIntegerField()),
-                ('performance', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='theatre.performance')),
-                ('reservation', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='theatre.reservation')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("row", models.PositiveIntegerField()),
+                ("seat", models.PositiveIntegerField()),
+                (
+                    "performance",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tickets",
+                        to="theatre.performance",
+                    ),
+                ),
+                (
+                    "reservation",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tickets",
+                        to="theatre.reservation",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['row', 'seat'],
-                'unique_together': {('row', 'seat', 'performance')},
+                "ordering": ["row", "seat"],
+                "unique_together": {("row", "seat", "performance")},
             },
         ),
     ]

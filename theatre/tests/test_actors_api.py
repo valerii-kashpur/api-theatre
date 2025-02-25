@@ -1,4 +1,3 @@
-from django.test import TestCase
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
 from theatre.models import Actor
@@ -16,14 +15,15 @@ class ActorViewSetUnauthenticatedTests(APITestCase):
         Actor.objects.create(first_name="John", last_name="Doe")
 
     def test_actors_list_unauthenticated(self):
-        """Test that an unauthenticated user cannot list actors (returns 401 Unauthorized)."""
+        """Test that an unauthenticated user
+         cannot list actors (returns 401 Unauthorized)."""
         url = "/api/theatre/actors/"
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
 
     def test_actors_create_unauthenticated(self):
@@ -35,12 +35,9 @@ class ActorViewSetUnauthenticatedTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(
             response.data["detail"],
-            "Authentication credentials were not provided."
+            "Authentication credentials were not provided.",
         )
-        self.assertEqual(
-            Actor.objects.count(),
-            1
-        )
+        self.assertEqual(Actor.objects.count(), 1)
 
 
 class ActorViewSetAuthenticatedAdminTests(APITestCase):
@@ -50,8 +47,7 @@ class ActorViewSetAuthenticatedAdminTests(APITestCase):
         """Set up test data, admin user, and authenticated client."""
         # Create a test admin user
         self.user = User.objects.create_superuser(
-            email="admin@example.com",
-            password="adminpass123"
+            email="admin@example.com", password="adminpass123"
         )
 
         # Generate JWT token
@@ -73,10 +69,11 @@ class ActorViewSetAuthenticatedAdminTests(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            len(response.data["results"]),
-            1
+            len(response.data["results"]), 1
         )  # Check the number of actors in results
-        self.assertEqual(response.data["results"][0]["full_name"], "John Doe")
+        self.assertEqual(
+            response.data["results"][0]["full_name"], "John Doe"
+        )
 
     def test_actors_create_authenticated(self):
         """Test that an authenticated admin user can create an actor."""
@@ -97,8 +94,7 @@ class ActorViewSetAuthenticatedUserTests(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
-            email="user@example.com",
-            password="userpass123"
+            email="user@example.com", password="userpass123"
         )
 
         refresh = RefreshToken.for_user(self.user)
@@ -116,14 +112,14 @@ class ActorViewSetAuthenticatedUserTests(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data["results"]), 1)
         self.assertEqual(
-            len(response.data["results"]),
-            1
+            response.data["results"][0]["full_name"], "John Doe"
         )
-        self.assertEqual(response.data["results"][0]["full_name"], "John Doe")
 
     def test_actors_create_authenticated(self):
-        """Test that an authenticated non-admin user cannot create an actor (returns 403 Forbidden)."""
+        """Test that an authenticated non-admin
+         user cannot create an actor (returns 403 Forbidden)."""
         url = "/api/theatre/actors/"
         data = {"first_name": "Jane", "last_name": "Smith"}
         response = self.client.post(url, data, format="json")
@@ -131,9 +127,6 @@ class ActorViewSetAuthenticatedUserTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(
             response.data["detail"],
-            "You do not have permission to perform this action."
+            "You do not have permission to perform this action.",
         )
-        self.assertEqual(
-            Actor.objects.count(),
-            1
-        )
+        self.assertEqual(Actor.objects.count(), 1)
