@@ -104,7 +104,7 @@ class PlayViewSet(
     mixins.RetrieveModelMixin,
     GenericViewSet,
 ):
-    queryset = Play.objects.all().prefetch_related("genres", "actors")
+    queryset = Play.objects.prefetch_related("genres", "actors")
     serializer_class = PlaySerializer
     pagination_class = PlayPagination
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
@@ -186,8 +186,8 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         .select_related("play", "theatre_hall")
         .annotate(
             tickets_available=(
-                F("theatre_hall__rows") * F("theatre_hall__seats_in_row")
-                - Count("tickets")
+                    F("theatre_hall__rows") * F("theatre_hall__seats_in_row")
+                    - Count("tickets")
             )
         )
     )
@@ -263,15 +263,15 @@ class ReservationViewSet(
 
     @extend_schema(
         summary="Create a payment intent for the reservation"
-        " using a test payment method",
+                " using a test payment method",
         description="Initiates a payment intent for the specified reservation"
-        " using Stripe in test mode. Requires a"
-        " test payment method ID or token in the request body."
-        " Use Stripe's test payment method IDs"
-        " (e.g., 'pm_card_visa') for simulation."
-        " See https://stripe.com/docs/testing for test data."
-        " This endpoint is configured to only accept"
-        " card payments without redirects.",
+                    " using Stripe in test mode. Requires a"
+                    " test payment method ID or token in the request body."
+                    " Use Stripe's test payment method IDs"
+                    " (e.g., 'pm_card_visa') for simulation."
+                    " See https://stripe.com/docs/testing for test data."
+                    " This endpoint is configured to only accept"
+                    " card payments without redirects.",
         request={
             "application/json": {
                 "type": "object",
@@ -279,9 +279,9 @@ class ReservationViewSet(
                     "payment_method_id": {
                         "type": "string",
                         "description": "The test payment method ID"
-                        " or token from Stripe"
-                        " (e.g., pm_card_visa for"
-                        " a successful test payment)",
+                                       " or token from Stripe"
+                                       " (e.g., pm_card_visa for"
+                                       " a successful test payment)",
                         "example": "pm_card_visa",
                     }
                 },
@@ -291,7 +291,7 @@ class ReservationViewSet(
         responses={
             200: OpenApiResponse(
                 description="Payment intent created successfully"
-                " with attached payment method",
+                            " with attached payment method",
                 examples=[
                     OpenApiExample(
                         "Example Response",
@@ -306,7 +306,7 @@ class ReservationViewSet(
             ),
             400: OpenApiResponse(
                 description="Bad request (e.g., reservation already processed,"
-                " invalid payment method, or Stripe error)",
+                            " invalid payment method, or Stripe error)",
                 examples=[
                     OpenApiExample(
                         "Error Example",
@@ -377,19 +377,19 @@ class ReservationViewSet(
     @extend_schema(
         summary="Confirm the payment for the reservation",
         description="Confirms a payment intent for the specified reservation"
-        " using Stripe in test mode. Requires the payment intent"
-        " ID from the 'pay' endpoint. The 'id' in the URL path"
-        " must be the reservation ID (an integer)."
-        " Since the payment method is already attached in"
-        " the 'pay' endpoint, this step simply verifies"
-        " the payment status.",
+                    " using Stripe in test mode. Requires the payment intent"
+                    " ID from the 'pay' endpoint. The 'id' in the URL path"
+                    " must be the reservation ID (an integer)."
+                    " Since the payment method is already attached in"
+                    " the 'pay' endpoint, this step simply verifies"
+                    " the payment status.",
         parameters=[
             OpenApiParameter(
                 name="id",
                 type=int,
                 location="path",
                 description="The unique integer ID of the reservation"
-                " to confirm payment for (e.g., 1)",
+                            " to confirm payment for (e.g., 1)",
                 required=True,
             ),
         ],
@@ -400,10 +400,10 @@ class ReservationViewSet(
                     "payment_intent_id": {
                         "type": "string",
                         "description": "The ID of the"
-                        " Payment Intent from Stripe"
-                        " (e.g., pi_3QwMRqEqE7060X0V8SCABXKv)."
-                        " Use the ID returned from the"
-                        ' "pay" endpoint.',
+                                       " Payment Intent from Stripe"
+                                       " (e.g., pi_3QwMRqEqE7060X0V8SCABXKv)."
+                                       " Use the ID returned from the"
+                                       ' "pay" endpoint.',
                         "example": "pi_3QwMRqEqE7060X0V8SCABXKv",
                     }
                 },
@@ -430,7 +430,7 @@ class ReservationViewSet(
             ),
             400: OpenApiResponse(
                 description="Bad request (e.g., invalid payment intent ID,"
-                " reservation not found, or Stripe error)",
+                            " reservation not found, or Stripe error)",
                 examples=[
                     OpenApiExample(
                         "Error Example",
