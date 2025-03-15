@@ -23,7 +23,6 @@ from theatre.pagination import (
     PerformancePagination,
     ReservationPagination,
 )
-from theatre.permissions import IsAdminOrIfAuthenticatedReadOnly
 from theatre.schemas import (
     play_list_schema,
     reservation_pay_schema,
@@ -52,7 +51,6 @@ class GenresViewSet(
     queryset = Genre.objects.all()
     serializer_class = GenresSerializer
     pagination_class = GenrePagination
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
 class ActorViewSet(
@@ -63,7 +61,6 @@ class ActorViewSet(
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
     pagination_class = ActorPagination
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @action(
         methods=["POST"],
@@ -90,7 +87,6 @@ class TheatreHallViewSet(
 ):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
 class PlayViewSet(
@@ -102,7 +98,6 @@ class PlayViewSet(
     queryset = Play.objects.prefetch_related("genres", "actors")
     serializer_class = PlaySerializer
     pagination_class = PlayPagination
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @staticmethod
     def _params_to_ints(qs):
@@ -167,7 +162,6 @@ class PerformanceViewSet(viewsets.ModelViewSet):
     )
     serializer_class = PerformanceSerializer
     pagination_class = PerformancePagination
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     def get_queryset(self):
         queryset = self.queryset
