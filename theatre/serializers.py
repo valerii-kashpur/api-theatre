@@ -90,8 +90,9 @@ class PerformanceSerializer(serializers.ModelSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    def validate(self, attrs):
-        data = super(TicketSerializer, self).validate(attrs=attrs)
+    def validate(self, *args):
+        attrs = args[0]
+        data = super(TicketSerializer, self).validate(attrs)
         Ticket.validate_ticket(
             attrs["row"],
             attrs["seat"],
@@ -135,8 +136,11 @@ class ReservationSerializer(serializers.ModelSerializer):
         with transaction.atomic():
             tickets_data = validated_data.pop("tickets")
             reservation = Reservation.objects.create(**validated_data)
-            for ticket_data in tickets_data:
-                Ticket.objects.create(reservation=reservation, **ticket_data)
+            tickets = [
+                Ticket(reservation=reservation, **ticket_data)
+                for ticket_data in tickets_data
+            ]
+            Ticket.objects.bulk_create(tickets)
             return reservation
 
 
