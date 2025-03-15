@@ -1,0 +1,2461 @@
+[
+  {
+    "model": "theatre.actor",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 2,
+    "fields": {
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 3,
+    "fields": {
+      "first_name": "Robert",
+      "last_name": "Johnson",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 4,
+    "fields": {
+      "first_name": "Emily",
+      "last_name": "Brown",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 5,
+    "fields": {
+      "first_name": "Michael",
+      "last_name": "Davis",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 6,
+    "fields": {
+      "first_name": "Sarah",
+      "last_name": "Wilson",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 7,
+    "fields": {
+      "first_name": "David",
+      "last_name": "Taylor",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 8,
+    "fields": {
+      "first_name": "Laura",
+      "last_name": "Martinez",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 9,
+    "fields": {
+      "first_name": "James",
+      "last_name": "Garcia",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 10,
+    "fields": {
+      "first_name": "Anna",
+      "last_name": "Lopez",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 11,
+    "fields": {
+      "first_name": "Thomas",
+      "last_name": "Lee",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 12,
+    "fields": {
+      "first_name": "Rachel",
+      "last_name": "Clark",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 13,
+    "fields": {
+      "first_name": "Peter",
+      "last_name": "Walker",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 14,
+    "fields": {
+      "first_name": "Sophie",
+      "last_name": "Hall",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 15,
+    "fields": {
+      "first_name": "Mark",
+      "last_name": "Allen",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 16,
+    "fields": {
+      "first_name": "Julia",
+      "last_name": "Young",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 17,
+    "fields": {
+      "first_name": "Henry",
+      "last_name": "King",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 18,
+    "fields": {
+      "first_name": "Olivia",
+      "last_name": "Scott",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 19,
+    "fields": {
+      "first_name": "William",
+      "last_name": "Green",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 20,
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Adams",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 21,
+    "fields": {
+      "first_name": "Daniel",
+      "last_name": "Baker",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 22,
+    "fields": {
+      "first_name": "Grace",
+      "last_name": "Carter",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 23,
+    "fields": {
+      "first_name": "Paul",
+      "last_name": "Mitchell",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 24,
+    "fields": {
+      "first_name": "Lily",
+      "last_name": "Perez",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 25,
+    "fields": {
+      "first_name": "Andrew",
+      "last_name": "Roberts",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 26,
+    "fields": {
+      "first_name": "Chloe",
+      "last_name": "Turner",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 27,
+    "fields": {
+      "first_name": "Ethan",
+      "last_name": "Phillips",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 28,
+    "fields": {
+      "first_name": "Mia",
+      "last_name": "Campbell",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 29,
+    "fields": {
+      "first_name": "Lucas",
+      "last_name": "Parker",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 30,
+    "fields": {
+      "first_name": "Zoe",
+      "last_name": "Evans",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 31,
+    "fields": {
+      "first_name": "Nathan",
+      "last_name": "Edwards",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 32,
+    "fields": {
+      "first_name": "Ava",
+      "last_name": "Collins",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 33,
+    "fields": {
+      "first_name": "Jack",
+      "last_name": "Stewart",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 34,
+    "fields": {
+      "first_name": "Isabella",
+      "last_name": "Morris",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 35,
+    "fields": {
+      "first_name": "Ryan",
+      "last_name": "Rogers",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 36,
+    "fields": {
+      "first_name": "Ella",
+      "last_name": "Reed",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 37,
+    "fields": {
+      "first_name": "Liam",
+      "last_name": "Cook",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 38,
+    "fields": {
+      "first_name": "Hannah",
+      "last_name": "Morgan",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 39,
+    "fields": {
+      "first_name": "Mason",
+      "last_name": "Bell",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 40,
+    "fields": {
+      "first_name": "Amelia",
+      "last_name": "Murphy",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 41,
+    "fields": {
+      "first_name": "Logan",
+      "last_name": "Bailey",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 42,
+    "fields": {
+      "first_name": "Sophia",
+      "last_name": "Rivera",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 43,
+    "fields": {
+      "first_name": "Owen",
+      "last_name": "Cooper",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 44,
+    "fields": {
+      "first_name": "Madison",
+      "last_name": "Richardson",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 45,
+    "fields": {
+      "first_name": "Carter",
+      "last_name": "Cox",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 46,
+    "fields": {
+      "first_name": "Charlotte",
+      "last_name": "Howard",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 47,
+    "fields": {
+      "first_name": "Elijah",
+      "last_name": "Ward",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 48,
+    "fields": {
+      "first_name": "Avery",
+      "last_name": "Torres",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 49,
+    "fields": {
+      "first_name": "Samuel",
+      "last_name": "Peterson",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.actor",
+    "pk": 50,
+    "fields": {
+      "first_name": "Scarlett",
+      "last_name": "Gray",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 1,
+    "fields": {
+      "name": "Drama"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 2,
+    "fields": {
+      "name": "Comedy"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 3,
+    "fields": {
+      "name": "Tragedy"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 4,
+    "fields": {
+      "name": "Musical"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 5,
+    "fields": {
+      "name": "Horror"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 6,
+    "fields": {
+      "name": "Romance"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 7,
+    "fields": {
+      "name": "Action"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 8,
+    "fields": {
+      "name": "Fantasy"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 9,
+    "fields": {
+      "name": "Sci-Fi"
+    }
+  },
+  {
+    "model": "theatre.Genre",
+    "pk": 10,
+    "fields": {
+      "name": "Mystery"
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 1,
+    "fields": {
+      "title": "Silent Whispers",
+      "description": "A tale of secrets",
+      "genres": [
+        1,
+        6
+      ],
+      "actors": [
+        1,
+        2,
+        3
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 2,
+    "fields": {
+      "title": "Laughing Moon",
+      "description": "A funny lunar adventure",
+      "genres": [
+        2
+      ],
+      "actors": [
+        4,
+        5
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 3,
+    "fields": {
+      "title": "Fallen Kings",
+      "description": "A tragic royal story",
+      "genres": [
+        3
+      ],
+      "actors": [
+        6,
+        7,
+        8
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 4,
+    "fields": {
+      "title": "Singing Stars",
+      "description": "A musical journey",
+      "genres": [
+        4
+      ],
+      "actors": [
+        9,
+        10
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 5,
+    "fields": {
+      "title": "Dark Cellar",
+      "description": "A horror mystery",
+      "genres": [
+        5
+      ],
+      "actors": [
+        11,
+        12
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 6,
+    "fields": {
+      "title": "Love in Rain",
+      "description": "A romantic tale",
+      "genres": [
+        6
+      ],
+      "actors": [
+        13,
+        14
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 7,
+    "fields": {
+      "title": "Chase at Dawn",
+      "description": "An action-packed story",
+      "genres": [
+        7
+      ],
+      "actors": [
+        15,
+        16
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 8,
+    "fields": {
+      "title": "Magic Forest",
+      "description": "A fantasy adventure",
+      "genres": [
+        8
+      ],
+      "actors": [
+        17,
+        18
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 9,
+    "fields": {
+      "title": "Space Odyssey",
+      "description": "A sci-fi epic",
+      "genres": [
+        9
+      ],
+      "actors": [
+        19,
+        20
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 10,
+    "fields": {
+      "title": "Hidden Truth",
+      "description": "A mysterious plot",
+      "genres": [
+        10
+      ],
+      "actors": [
+        21,
+        22
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 11,
+    "fields": {
+      "title": "Broken Dreams",
+      "description": "A dramatic fall",
+      "genres": [
+        1
+      ],
+      "actors": [
+        23,
+        24
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 12,
+    "fields": {
+      "title": "Clumsy Thief",
+      "description": "A comic heist",
+      "genres": [
+        2
+      ],
+      "actors": [
+        25,
+        26
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 13,
+    "fields": {
+      "title": "Lost Crown",
+      "description": "A tragic betrayal",
+      "genres": [
+        3
+      ],
+      "actors": [
+        27,
+        28
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 14,
+    "fields": {
+      "title": "Melody of Life",
+      "description": "A musical saga",
+      "genres": [
+        4
+      ],
+      "actors": [
+        29,
+        30
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 15,
+    "fields": {
+      "title": "Ghost House",
+      "description": "A spooky tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        31,
+        32
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 16,
+    "fields": {
+      "title": "Eternal Vow",
+      "description": "A love story",
+      "genres": [
+        6
+      ],
+      "actors": [
+        33,
+        34
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 17,
+    "fields": {
+      "title": "Run or Die",
+      "description": "An action thriller",
+      "genres": [
+        7
+      ],
+      "actors": [
+        35,
+        36
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 18,
+    "fields": {
+      "title": "Dragon Realm",
+      "description": "A fantasy epic",
+      "genres": [
+        8
+      ],
+      "actors": [
+        37,
+        38
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 19,
+    "fields": {
+      "title": "Mars Legacy",
+      "description": "A sci-fi drama",
+      "genres": [
+        9
+      ],
+      "actors": [
+        39,
+        40
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 20,
+    "fields": {
+      "title": "Secret Door",
+      "description": "A mystery unfolds",
+      "genres": [
+        10
+      ],
+      "actors": [
+        41,
+        42
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 21,
+    "fields": {
+      "title": "Echoes of Time",
+      "description": "A dramatic tale",
+      "genres": [
+        1
+      ],
+      "actors": [
+        43,
+        44
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 22,
+    "fields": {
+      "title": "Fool's Gold",
+      "description": "A comic adventure",
+      "genres": [
+        2
+      ],
+      "actors": [
+        45,
+        46
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 23,
+    "fields": {
+      "title": "Fading Hope",
+      "description": "A tragic loss",
+      "genres": [
+        3
+      ],
+      "actors": [
+        47,
+        48
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 24,
+    "fields": {
+      "title": "Rhythm of Soul",
+      "description": "A musical tale",
+      "genres": [
+        4
+      ],
+      "actors": [
+        49,
+        50
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 25,
+    "fields": {
+      "title": "Nightmare Lane",
+      "description": "A horror story",
+      "genres": [
+        5
+      ],
+      "actors": [
+        1,
+        2
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 26,
+    "fields": {
+      "title": "Heart Strings",
+      "description": "A romantic drama",
+      "genres": [
+        6
+      ],
+      "actors": [
+        3,
+        4
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 27,
+    "fields": {
+      "title": "Battle Cry",
+      "description": "An action epic",
+      "genres": [
+        7
+      ],
+      "actors": [
+        5,
+        6
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 28,
+    "fields": {
+      "title": "Wizard's Path",
+      "description": "A fantasy quest",
+      "genres": [
+        8
+      ],
+      "actors": [
+        7,
+        8
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 29,
+    "fields": {
+      "title": "Star Voyage",
+      "description": "A sci-fi journey",
+      "genres": [
+        9
+      ],
+      "actors": [
+        9,
+        10
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 30,
+    "fields": {
+      "title": "Twisted Lies",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        11,
+        12
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 31,
+    "fields": {
+      "title": "Shades of Gray",
+      "description": "A dramatic story",
+      "genres": [
+        1
+      ],
+      "actors": [
+        13,
+        14
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 32,
+    "fields": {
+      "title": "Banana Slip",
+      "description": "A funny mishap",
+      "genres": [
+        2
+      ],
+      "actors": [
+        15,
+        16
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 33,
+    "fields": {
+      "title": "Last Stand",
+      "description": "A tragic fight",
+      "genres": [
+        3
+      ],
+      "actors": [
+        17,
+        18
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 34,
+    "fields": {
+      "title": "Dance of Joy",
+      "description": "A musical delight",
+      "genres": [
+        4
+      ],
+      "actors": [
+        19,
+        20
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 35,
+    "fields": {
+      "title": "Grave Shadows",
+      "description": "A horror tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        21,
+        22
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 36,
+    "fields": {
+      "title": "Forever Yours",
+      "description": "A love saga",
+      "genres": [
+        6
+      ],
+      "actors": [
+        23,
+        24
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 37,
+    "fields": {
+      "title": "Sky Assault",
+      "description": "An action story",
+      "genres": [
+        7
+      ],
+      "actors": [
+        25,
+        26
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 38,
+    "fields": {
+      "title": "Elf Kingdom",
+      "description": "A fantasy world",
+      "genres": [
+        8
+      ],
+      "actors": [
+        27,
+        28
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 39,
+    "fields": {
+      "title": "Planet Zero",
+      "description": "A sci-fi thriller",
+      "genres": [
+        9
+      ],
+      "actors": [
+        29,
+        30
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 40,
+    "fields": {
+      "title": "Locked Room",
+      "description": "A mystery puzzle",
+      "genres": [
+        10
+      ],
+      "actors": [
+        31,
+        32
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 41,
+    "fields": {
+      "title": "Tears of Joy",
+      "description": "A dramatic tale",
+      "genres": [
+        1
+      ],
+      "actors": [
+        33,
+        34
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 42,
+    "fields": {
+      "title": "Silly Knight",
+      "description": "A comic adventure",
+      "genres": [
+        2
+      ],
+      "actors": [
+        35,
+        36
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 43,
+    "fields": {
+      "title": "Broken Throne",
+      "description": "A tragic tale",
+      "genres": [
+        3
+      ],
+      "actors": [
+        37,
+        38
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 44,
+    "fields": {
+      "title": "Song of Hope",
+      "description": "A musical story",
+      "genres": [
+        4
+      ],
+      "actors": [
+        39,
+        40
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 45,
+    "fields": {
+      "title": "Haunted Woods",
+      "description": "A horror tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        41,
+        42
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 46,
+    "fields": {
+      "title": "Sweet Promise",
+      "description": "A romantic story",
+      "genres": [
+        6
+      ],
+      "actors": [
+        43,
+        44
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 47,
+    "fields": {
+      "title": "Fire Storm",
+      "description": "An action epic",
+      "genres": [
+        7
+      ],
+      "actors": [
+        45,
+        46
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 48,
+    "fields": {
+      "title": "Fairy Dust",
+      "description": "A fantasy tale",
+      "genres": [
+        8
+      ],
+      "actors": [
+        47,
+        48
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 49,
+    "fields": {
+      "title": "Galactic War",
+      "description": "A sci-fi saga",
+      "genres": [
+        9
+      ],
+      "actors": [
+        49,
+        50
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 50,
+    "fields": {
+      "title": "Shadow Clue",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        1,
+        2
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 51,
+    "fields": {
+      "title": "Glass Heart",
+      "description": "A dramatic story",
+      "genres": [
+        1
+      ],
+      "actors": [
+        3,
+        4
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 52,
+    "fields": {
+      "title": "Goofy Chase",
+      "description": "A comic tale",
+      "genres": [
+        2
+      ],
+      "actors": [
+        5,
+        6
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 53,
+    "fields": {
+      "title": "End of Line",
+      "description": "A tragic end",
+      "genres": [
+        3
+      ],
+      "actors": [
+        7,
+        8
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 54,
+    "fields": {
+      "title": "Harmony Call",
+      "description": "A musical journey",
+      "genres": [
+        4
+      ],
+      "actors": [
+        9,
+        10
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 55,
+    "fields": {
+      "title": "Cryptic Fear",
+      "description": "A horror tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        11,
+        12
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 56,
+    "fields": {
+      "title": "Love Beyond",
+      "description": "A romantic epic",
+      "genres": [
+        6
+      ],
+      "actors": [
+        13,
+        14
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 57,
+    "fields": {
+      "title": "Rogue Wave",
+      "description": "An action story",
+      "genres": [
+        7
+      ],
+      "actors": [
+        15,
+        16
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 58,
+    "fields": {
+      "title": "Mythic Quest",
+      "description": "A fantasy tale",
+      "genres": [
+        8
+      ],
+      "actors": [
+        17,
+        18
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 59,
+    "fields": {
+      "title": "Time Rift",
+      "description": "A sci-fi adventure",
+      "genres": [
+        9
+      ],
+      "actors": [
+        19,
+        20
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 60,
+    "fields": {
+      "title": "Blind Trust",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        21,
+        22
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 61,
+    "fields": {
+      "title": "Winds of Fate",
+      "description": "A dramatic tale",
+      "genres": [
+        1
+      ],
+      "actors": [
+        23,
+        24
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 62,
+    "fields": {
+      "title": "Prank Night",
+      "description": "A comic story",
+      "genres": [
+        2
+      ],
+      "actors": [
+        25,
+        26
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 63,
+    "fields": {
+      "title": "Shattered Oath",
+      "description": "A tragic tale",
+      "genres": [
+        3
+      ],
+      "actors": [
+        27,
+        28
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 64,
+    "fields": {
+      "title": "Soul Chords",
+      "description": "A musical tale",
+      "genres": [
+        4
+      ],
+      "actors": [
+        29,
+        30
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 65,
+    "fields": {
+      "title": "Dead End",
+      "description": "A horror story",
+      "genres": [
+        5
+      ],
+      "actors": [
+        31,
+        32
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 66,
+    "fields": {
+      "title": "True Kiss",
+      "description": "A romantic tale",
+      "genres": [
+        6
+      ],
+      "actors": [
+        33,
+        34
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 67,
+    "fields": {
+      "title": "Iron Clash",
+      "description": "An action epic",
+      "genres": [
+        7
+      ],
+      "actors": [
+        35,
+        36
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 68,
+    "fields": {
+      "title": "Pixie Dust",
+      "description": "A fantasy tale",
+      "genres": [
+        8
+      ],
+      "actors": [
+        37,
+        38
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 69,
+    "fields": {
+      "title": "Quantum Leap",
+      "description": "A sci-fi story",
+      "genres": [
+        9
+      ],
+      "actors": [
+        39,
+        40
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 70,
+    "fields": {
+      "title": "False Mask",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        41,
+        42
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 71,
+    "fields": {
+      "title": "River of Tears",
+      "description": "A dramatic tale",
+      "genres": [
+        1
+      ],
+      "actors": [
+        43,
+        44
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 72,
+    "fields": {
+      "title": "Clown Fall",
+      "description": "A comic tale",
+      "genres": [
+        2
+      ],
+      "actors": [
+        45,
+        46
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 73,
+    "fields": {
+      "title": "Cursed Blade",
+      "description": "A tragic story",
+      "genres": [
+        3
+      ],
+      "actors": [
+        47,
+        48
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 74,
+    "fields": {
+      "title": "Echo Song",
+      "description": "A musical tale",
+      "genres": [
+        4
+      ],
+      "actors": [
+        49,
+        50
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 75,
+    "fields": {
+      "title": "Silent Grave",
+      "description": "A horror tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        1,
+        2
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 76,
+    "fields": {
+      "title": "Golden Heart",
+      "description": "A romantic tale",
+      "genres": [
+        6
+      ],
+      "actors": [
+        3,
+        4
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 77,
+    "fields": {
+      "title": "Thunder Strike",
+      "description": "An action tale",
+      "genres": [
+        7
+      ],
+      "actors": [
+        5,
+        6
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 78,
+    "fields": {
+      "title": "Lost Realm",
+      "description": "A fantasy tale",
+      "genres": [
+        8
+      ],
+      "actors": [
+        7,
+        8
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 79,
+    "fields": {
+      "title": "Nova Dawn",
+      "description": "A sci-fi tale",
+      "genres": [
+        9
+      ],
+      "actors": [
+        9,
+        10
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 80,
+    "fields": {
+      "title": "Dark Riddle",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        11,
+        12
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 81,
+    "fields": {
+      "title": "Frail Hope",
+      "description": "A dramatic tale",
+      "genres": [
+        1
+      ],
+      "actors": [
+        13,
+        14
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 82,
+    "fields": {
+      "title": "Jester's Luck",
+      "description": "A comic tale",
+      "genres": [
+        2
+      ],
+      "actors": [
+        15,
+        16
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 83,
+    "fields": {
+      "title": "Doomed Fate",
+      "description": "A tragic tale",
+      "genres": [
+        3
+      ],
+      "actors": [
+        17,
+        18
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 84,
+    "fields": {
+      "title": "Lullaby Night",
+      "description": "A musical tale",
+      "genres": [
+        4
+      ],
+      "actors": [
+        19,
+        20
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 85,
+    "fields": {
+      "title": "Witch Curse",
+      "description": "A horror tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        21,
+        22
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 86,
+    "fields": {
+      "title": "Pure Bliss",
+      "description": "A romantic tale",
+      "genres": [
+        6
+      ],
+      "actors": [
+        23,
+        24
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 87,
+    "fields": {
+      "title": "Blaze of Glory",
+      "description": "An action tale",
+      "genres": [
+        7
+      ],
+      "actors": [
+        25,
+        26
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 88,
+    "fields": {
+      "title": "Ogre's Lair",
+      "description": "A fantasy tale",
+      "genres": [
+        8
+      ],
+      "actors": [
+        27,
+        28
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 89,
+    "fields": {
+      "title": "Lunar Base",
+      "description": "A sci-fi tale",
+      "genres": [
+        9
+      ],
+      "actors": [
+        29,
+        30
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 90,
+    "fields": {
+      "title": "Veiled Truth",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        31,
+        32
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 91,
+    "fields": {
+      "title": "Storm Within",
+      "description": "A dramatic tale",
+      "genres": [
+        1
+      ],
+      "actors": [
+        33,
+        34
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 92,
+    "fields": {
+      "title": "Mad Dash",
+      "description": "A comic tale",
+      "genres": [
+        2
+      ],
+      "actors": [
+        35,
+        36
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 93,
+    "fields": {
+      "title": "Frail Crown",
+      "description": "A tragic tale",
+      "genres": [
+        3
+      ],
+      "actors": [
+        37,
+        38
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 94,
+    "fields": {
+      "title": "Chime of Fate",
+      "description": "A musical tale",
+      "genres": [
+        4
+      ],
+      "actors": [
+        39,
+        40
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 95,
+    "fields": {
+      "title": "Cold Fear",
+      "description": "A horror tale",
+      "genres": [
+        5
+      ],
+      "actors": [
+        41,
+        42
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 96,
+    "fields": {
+      "title": "Soft Whisper",
+      "description": "A romantic tale",
+      "genres": [
+        6
+      ],
+      "actors": [
+        43,
+        44
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 97,
+    "fields": {
+      "title": "Steel Heart",
+      "description": "An action tale",
+      "genres": [
+        7
+      ],
+      "actors": [
+        45,
+        46
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 98,
+    "fields": {
+      "title": "Goblin Tale",
+      "description": "A fantasy tale",
+      "genres": [
+        8
+      ],
+      "actors": [
+        47,
+        48
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 99,
+    "fields": {
+      "title": "Orbit Fall",
+      "description": "A sci-fi tale",
+      "genres": [
+        9
+      ],
+      "actors": [
+        49,
+        50
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Play",
+    "pk": 100,
+    "fields": {
+      "title": "Final Clue",
+      "description": "A mystery tale",
+      "genres": [
+        10
+      ],
+      "actors": [
+        1,
+        2
+      ],
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.TheatreHall",
+    "pk": 1,
+    "fields": {
+      "name": "Main Hall",
+      "rows": 20,
+      "seats_in_row": 30
+    }
+  },
+  {
+    "model": "theatre.TheatreHall",
+    "pk": 2,
+    "fields": {
+      "name": "Small Stage",
+      "rows": 10,
+      "seats_in_row": 15
+    }
+  },
+  {
+    "model": "theatre.TheatreHall",
+    "pk": 3,
+    "fields": {
+      "name": "Grand Theatre",
+      "rows": 25,
+      "seats_in_row": 40
+    }
+  },
+  {
+    "model": "theatre.TheatreHall",
+    "pk": 4,
+    "fields": {
+      "name": "Open Air",
+      "rows": 15,
+      "seats_in_row": 20
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 1,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 1,
+      "show_time": "2025-03-01T19:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 2,
+    "fields": {
+      "play": 2,
+      "theatre_hall": 2,
+      "show_time": "2025-03-02T18:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 3,
+    "fields": {
+      "play": 3,
+      "theatre_hall": 3,
+      "show_time": "2025-03-03T20:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 4,
+    "fields": {
+      "play": 4,
+      "theatre_hall": 4,
+      "show_time": "2025-03-04T19:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 5,
+    "fields": {
+      "play": 5,
+      "theatre_hall": 1,
+      "show_time": "2025-03-05T18:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 6,
+    "fields": {
+      "play": 6,
+      "theatre_hall": 2,
+      "show_time": "2025-03-06T20:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 7,
+    "fields": {
+      "play": 7,
+      "theatre_hall": 3,
+      "show_time": "2025-03-07T19:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 8,
+    "fields": {
+      "play": 8,
+      "theatre_hall": 4,
+      "show_time": "2025-03-08T18:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 9,
+    "fields": {
+      "play": 9,
+      "theatre_hall": 1,
+      "show_time": "2025-03-09T20:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 10,
+    "fields": {
+      "play": 10,
+      "theatre_hall": 2,
+      "show_time": "2025-03-10T19:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 11,
+    "fields": {
+      "play": 11,
+      "theatre_hall": 3,
+      "show_time": "2025-03-11T18:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 12,
+    "fields": {
+      "play": 12,
+      "theatre_hall": 4,
+      "show_time": "2025-03-12T20:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 13,
+    "fields": {
+      "play": 13,
+      "theatre_hall": 1,
+      "show_time": "2025-03-13T19:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 14,
+    "fields": {
+      "play": 14,
+      "theatre_hall": 2,
+      "show_time": "2025-03-14T18:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 15,
+    "fields": {
+      "play": 15,
+      "theatre_hall": 3,
+      "show_time": "2025-03-15T20:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 16,
+    "fields": {
+      "play": 16,
+      "theatre_hall": 4,
+      "show_time": "2025-03-16T19:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 17,
+    "fields": {
+      "play": 17,
+      "theatre_hall": 1,
+      "show_time": "2025-03-17T18:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 18,
+    "fields": {
+      "play": 18,
+      "theatre_hall": 2,
+      "show_time": "2025-03-18T20:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 19,
+    "fields": {
+      "play": 19,
+      "theatre_hall": 3,
+      "show_time": "2025-03-19T19:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 20,
+    "fields": {
+      "play": 20,
+      "theatre_hall": 4,
+      "show_time": "2025-03-20T18:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 21,
+    "fields": {
+      "play": 21,
+      "theatre_hall": 1,
+      "show_time": "2025-03-21T20:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 22,
+    "fields": {
+      "play": 22,
+      "theatre_hall": 2,
+      "show_time": "2025-03-22T19:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 23,
+    "fields": {
+      "play": 23,
+      "theatre_hall": 3,
+      "show_time": "2025-03-23T18:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 24,
+    "fields": {
+      "play": 24,
+      "theatre_hall": 4,
+      "show_time": "2025-03-24T20:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 25,
+    "fields": {
+      "play": 25,
+      "theatre_hall": 1,
+      "show_time": "2025-03-25T19:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 26,
+    "fields": {
+      "play": 26,
+      "theatre_hall": 2,
+      "show_time": "2025-03-26T18:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 27,
+    "fields": {
+      "play": 27,
+      "theatre_hall": 3,
+      "show_time": "2025-03-27T20:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 28,
+    "fields": {
+      "play": 28,
+      "theatre_hall": 4,
+      "show_time": "2025-03-28T19:30:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 29,
+    "fields": {
+      "play": 29,
+      "theatre_hall": 1,
+      "show_time": "2025-03-29T18:00:00Z",
+      "image": null
+    }
+  },
+  {
+    "model": "theatre.Performance",
+    "pk": 30,
+    "fields": {
+      "play": 30,
+      "theatre_hall": 2,
+      "show_time": "2025-03-30T20:30:00Z",
+      "image": null
+    }
+  }
+]
