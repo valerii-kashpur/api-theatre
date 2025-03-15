@@ -8,7 +8,7 @@ def image_file_path(
         instance,
         filename,
         folder: str = "other",
-        unique_key: str = None
+        unique_key: str | None = None
 ):
     _, extension = os.path.splitext(filename)
 

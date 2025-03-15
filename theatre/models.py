@@ -48,11 +48,11 @@ class Actor(models.Model):
 
     @property
     def full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.__str__()
 
 
 class TheatreHall(models.Model):
-    name = models.CharField(max_length=255, null=False, blank=False)
+    name = models.CharField(max_length=255)
     rows = models.PositiveIntegerField()
     seats_in_row = models.PositiveIntegerField()
 
@@ -65,8 +65,16 @@ class TheatreHall(models.Model):
 
 
 class Performance(models.Model):
-    play = models.ForeignKey(Play, on_delete=models.CASCADE)
-    theatre_hall = models.ForeignKey(TheatreHall, on_delete=models.CASCADE)
+    play = models.ForeignKey(
+        Play,
+        on_delete=models.CASCADE,
+        related_name="performances"
+    )
+    theatre_hall = models.ForeignKey(
+        TheatreHall,
+        on_delete=models.CASCADE,
+        related_name="performances"
+    )
     show_time = models.DateTimeField()
     image = models.ImageField(
         null=True,
@@ -95,7 +103,9 @@ class Reservation(models.Model):
         ],
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="reservations"
     )
 
     def __str__(self):
@@ -126,9 +136,9 @@ class Ticket(models.Model):
                 raise error_to_raise(
                     {
                         ticket_attr_name: f"{ticket_attr_name} "
-                        f"number must be in available range:"
-                        f" (1, {theatre_hall_attr_name}): "
-                        f"(1, {count_attrs})"
+                                          f"number must be in available range:"
+                                          f" (1, {theatre_hall_attr_name}): "
+                                          f"(1, {count_attrs})"
                     }
                 )
 
@@ -140,21 +150,18 @@ class Ticket(models.Model):
             ValidationError,
         )
 
-    def save(
-        self,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
-    ):
+    def save(self, *args, **kwargs):
         self.full_clean()
-        return super(Ticket, self).save(
-            force_insert, force_update, using, update_fields
-        )
+        return super(Ticket, self).save(*args, **kwargs)
 
     def __str__(self):
         return f"{str(self.performance)} (row: {self.row}, seat: {self.seat})"
 
     class Meta:
-        unique_together = ("row", "seat", "performance")
+        constraints = [
+            models.UniqueConstraint(
+                fields=["row", "seat", "performance"],
+                name="unique_ticket_per_performance"
+            )
+        ]
         ordering = ["row", "seat"]
