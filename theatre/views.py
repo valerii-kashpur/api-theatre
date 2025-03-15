@@ -208,20 +208,22 @@ class ReservationViewSet(
     mixins.CreateModelMixin, mixins.ListModelMixin, GenericViewSet
 ):
     queryset = Reservation.objects.prefetch_related(
-        "tickets__performance_play", "tickets__performance__theatre_hall"
+        "tickets__performance__play", "tickets__performance__theatre_hall"
     )
     serializer_class = ReservationSerializer
     pagination_class = ReservationPagination
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return Reservation.objects.filter(user=self.request.user)
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
 
     def get_serializer_class(self):
+        serializer_class = super().get_serializer_class()
         if self.action == "list":
-            return ReservationListSerializer
+            serializer_class = ReservationListSerializer
 
-        return ReservationSerializer
+        return serializer_class
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
