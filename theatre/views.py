@@ -165,7 +165,7 @@ class PerformanceViewSet(viewsets.ModelViewSet):
     pagination_class = PerformancePagination
 
     def get_queryset(self):
-        queryset = self.queryset
+        queryset = super().get_queryset()
 
         if date := self.request.query_params.get("date"):
             date = datetime.strptime(date, "%Y-%m-%d").date()
@@ -177,13 +177,14 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return queryset
 
     def get_serializer_class(self):
+        serializer_class = super().get_serializer_class()
         if self.action == "retrieve":
-            return PerformanceDetailSerializer
+            serializer_class = PerformanceDetailSerializer
 
         if self.action == "list":
-            return PerformanceListSerializer
+            serializer_class = PerformanceListSerializer
 
-        return PerformanceSerializer
+        return serializer_class
 
     @action(
         methods=["POST"],
