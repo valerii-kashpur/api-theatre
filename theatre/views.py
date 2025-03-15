@@ -7,7 +7,6 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from theatre.models import (
     Genre,
@@ -53,7 +52,6 @@ class GenresViewSet(
     queryset = Genre.objects.all()
     serializer_class = GenresSerializer
     pagination_class = GenrePagination
-    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
@@ -65,7 +63,6 @@ class ActorViewSet(
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
     pagination_class = ActorPagination
-    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @action(
@@ -93,7 +90,6 @@ class TheatreHallViewSet(
 ):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
-    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
@@ -171,7 +167,6 @@ class PerformanceViewSet(viewsets.ModelViewSet):
     )
     serializer_class = PerformanceSerializer
     pagination_class = PerformancePagination
-    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     def get_queryset(self):
@@ -221,7 +216,6 @@ class ReservationViewSet(
     )
     serializer_class = ReservationSerializer
     pagination_class = ReservationPagination
-    authentication_classes = (JWTAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
