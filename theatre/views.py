@@ -105,7 +105,7 @@ class PlayViewSet(
         return [int(str_id) for str_id in qs.split(",")]
 
     def get_queryset(self):
-        queryset = self.queryset
+        queryset = super().get_queryset()
 
         if title := self.request.query_params.get("title"):
             queryset = queryset.filter(title__icontains=title)
@@ -119,13 +119,14 @@ class PlayViewSet(
         return queryset.distinct()
 
     def get_serializer_class(self):
+        serializer_class = super().get_serializer_class()
         if self.action == "retrieve":
-            return PlayDetailSerializer
+            serializer_class = PlayDetailSerializer
 
         if self.action == "list":
-            return PlayListSerializer
+            serializer_class = PlayListSerializer
 
-        return PlaySerializer
+        return serializer_class
 
     @action(
         methods=["POST"],
